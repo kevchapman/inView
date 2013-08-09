@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>InView Js demo</title>
+	<link rel="stylesheet" href="_includes/bootstrap.min.css">
+	<style>
+		.container{max-width:500px;}
+		.inView,#imgs p{-webkit-transition:1000ms ease;}
+		.out,#imgs p{opacity:0;}
+		.in,#imgs p.in{opacity:1 !important;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>inView js demo</h1>
+		</div>
+		<section>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, blanditiis, fuga perspiciatis cum nisi ex eos ipsum quo rerum atque veniam quod rem eveniet eius sit. Libero earum itaque veniam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, blanditiis, fuga perspiciatis cum nisi ex eos ipsum quo rerum atque veniam quod rem eveniet eius sit. Libero earum itaque veniam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, blanditiis, fuga perspiciatis cum nisi ex eos ipsum quo rerum atque veniam quod rem eveniet eius sit. Libero earum itaque veniam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, blanditiis, fuga perspiciatis cum nisi ex eos ipsum quo rerum atque veniam quod rem eveniet eius sit. Libero earum itaque veniam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, blanditiis, fuga perspiciatis cum nisi ex eos ipsum quo rerum atque veniam quod rem eveniet eius sit. Libero earum itaque veniam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, blanditiis, fuga perspiciatis cum nisi ex eos ipsum quo rerum atque veniam quod rem eveniet eius sit. Libero earum itaque veniam.</p>
+		</section>
+		<section id="imgs">
+			<p><img src="http://lorempixel.com/500/500" width="500" height="500" alt=""></p>
+			<p><img src="http://lorempixel.com/500/500" width="500" height="500" alt=""></p>
+			<p><img src="http://lorempixel.com/500/500" width="500" height="500" alt=""></p>
+			<p><img src="http://lorempixel.com/500/500" width="500" height="500" alt=""></p>
+			<p><img src="http://lorempixel.com/500/500" width="500" height="500" alt=""></p>
+		</section>
+		<div id="inView1" class="inView out">
+			<p>This is the first inView panel</p>
+		</div>
+	</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../src/js/inView.js"></script>
+<script>
+	(function($,win){
+		$('#imgs p').inView(function(){
+			this.removeClass('out').addClass('in');
+		});
+	})(jQuery,window)
+
+</script>
+</body>
+</html>
