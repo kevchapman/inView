@@ -15,7 +15,10 @@ In your web page:
 <script src="dist/inView.min.js"></script>
 <script>
 jQuery(function($) {
-  $.awesome(); // "awesome"
+  $('jquery selector').inView(function(){
+  	// code to be run
+  	// this is set to the jquery object
+  });
 });
 </script>
 ```
@@ -24,7 +27,7 @@ jQuery(function($) {
 _(Coming soon)_
 
 ## Examples
-_(Coming soon)_
+see demo/index.html
 
 ## Release History
 _(Nothing yet)_
