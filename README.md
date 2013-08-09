@@ -12,7 +12,7 @@ In your web page:
 
 ```html
 <script src="jquery.js"></script>
-<script src="dist/inView.min.js"></script>
+<script src="src/inView.min.js"></script>
 <script>
 jQuery(function($) {
   $('jquery selector').inView(function(){
