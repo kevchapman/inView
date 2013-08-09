@@ -33,9 +33,8 @@
 	}
 	InviewController.prototype = {
 		checkPositions:function(){
-			var t = this,
-				st = this.win.scrollTop();
-			this.vis = this.h+st;
+			var t = this;
+			this.vis = this.h + this.win.scrollTop();
 			t.eventstack.run();
 		},
 		setHeight:function(){
@@ -48,10 +47,12 @@
 		this.ele.data().visible = false;
 		if(!window.inviewController){ window.inviewController = new InviewController(); }
 		window.inviewController.eventstack.add(ele.data().id,function(){
-			if((ele.offset().top + ele.outerHeight()) < window.inviewController.vis && !ele.data().visible){
+			var isInView = (ele.offset().top + ele.outerHeight()) < window.inviewController.vis;
+			console.log(ele[0],isInView);
+			if( isInView && !ele.data().visible ){
 				func.call(ele);
 				ele.data().visible = true;
-				window.inviewController.eventstack.events[ele.data().id] = function(){};
+				//window.inviewController.eventstack.events[ele.data().id] = function(){};
 			}
 		});
 		$(window).scroll();
