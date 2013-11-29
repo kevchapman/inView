@@ -19,7 +19,8 @@ jQuery(function($) {
   	namespace: 'mynamespace', // used to add a key to the eventstack so it can be removed once fired
   	callback: function(){
   		// code to be run when element is within the viewport
-  	}
+  	},
+  	offset: 0 // used to reduce the V distance used when calculating the elements height (can use -n to increase the distance) 
   });
 });
 </script>
