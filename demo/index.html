@@ -40,10 +40,14 @@
 <script src="../src/js/inView.js"></script>
 <script>
 	(function($,win){
-		$('#imgs p').inView(function(){
-			this.removeClass('out').addClass('in');
+		$('#imgs p').inView({
+			namespace: 'imgIn',
+			offset: 250,
+			callback: function(){
+				this.removeClass('out').addClass('in');
+			}
 		});
-	})(jQuery,window)
+	})(jQuery,window);
 
 </script>
 </body>

@@ -43,26 +43,35 @@
 		}
 	};
 
-	function Inview(ele,func){
+	function Inview(ele,opts){
+		var t = this;
 		this.ele = ele;
-		this.ele.data().visible = false;
+		this.opts = $.extend({},{
+			callback: function(){},
+			offset: 0,
+			namespace: 'inview',
+			index: 0
+		}, opts);
+		this.eventKey = this.opts.namespace + this.opts.index;
+		ele.data.visible = false;
+
 		if(!window.inviewController){ window.inviewController = new InviewController(); }
-		window.inviewController.eventstack.add(ele.data().id,function(){
-			if((ele.offset().top + ele.outerHeight()) < window.inviewController.vis && !ele.data().visible){
-				func.call(ele);
+
+		window.inviewController.eventstack.add( this.eventKey, function(){
+			if( (ele.offset().top + (ele.outerHeight() - t.opts.offset) ) < window.inviewController.vis && !ele.data().visible ){
+				t.opts.callback.call(ele);
 				ele.data().visible = true;
-				window.inviewController.eventstack.events[ele.data().id] = function(){};
+				// remove event after its been fired
+				window.inviewController.eventstack.events[t.eventKey] = function(){};
 			}
 		});
 		$(window).scroll();
 	}
-	$.fn.inView = function(func){
-		var key = this.selector.replace(' ','');
+	$.fn.inView = function(opts){
 		return this.each(function(i){
-			var $t = $(this);
-			$t.data().id = key+i;
+			opts.index = i;
 			$(this).data({
-				inview: new Inview($(this),func)
+				inview: new Inview($(this),opts)
 			});
 		});
 	};
